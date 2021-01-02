@@ -62,13 +62,15 @@ def cv_kfold_logreg(X, y, C, penalty, K):
 
     return validation_dict
 
+
+
 def cv_kfold_svm(X, y, C, K,gamma, flag ='linear'):
     kf = SKFold(n_splits=K)
     svc = svm.SVC(probability=True)
     pipe = Pipeline(steps=[('svm', svc)])
     svm_lin = GridSearchCV(estimator=pipe,
                            param_grid={'svm__kernel': [flag], 'svm__C': C, 'svm__gamma': gamma},
-                           scoring=['accuracy', 'f1', 'precision', 'recall', 'roc_auc'],
+                           scoring=['roc_auc'],
                            cv= kf, refit='roc_auc', verbose=3, return_train_score=True)
     for train_idx, val_idx in kf.split(X, y):
         x_train, x_val = X[train_idx], X[val_idx]
