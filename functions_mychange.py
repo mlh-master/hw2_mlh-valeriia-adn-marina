@@ -64,7 +64,7 @@ def cv_kfold_logreg(X, y, C, penalty, K):
     return validation_dict
 
 
-def cv_kfold_svm(X, y, C, K, gamma, flag='linear'):
+def cv_kfold_svm(X, y, C, K, gamma = [0], flag='linear'):
     kf = SKFold(n_splits=K)
     svc = svm.SVC(probability=True)
     pipe = Pipeline(steps=[('svm', svc)])
