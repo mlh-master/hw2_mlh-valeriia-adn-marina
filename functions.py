@@ -77,6 +77,5 @@ def calc_stat(X, y,clf):
     PPV = TP / (TP + FP)
     Acc = (TP + TN) / (TP + TN + FP + FN)
     F1 = (2 * Se * PPV) / (Se + PPV)
-
-    print('Accuracy is {:.2f}. \nF1 is {:.2f}. '.format(Acc, F1))
-    print('AUROC is {:.3f}'.format(roc_auc_score(y, y_pred_proba[:, 1])))
+    AUROC = roc_auc_score(y, y_pred_proba[:, 1])
+    return Acc, F1, AUROC
