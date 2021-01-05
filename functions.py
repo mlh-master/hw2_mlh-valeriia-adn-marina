@@ -1,15 +1,12 @@
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold as SKFold
-from sklearn.metrics import log_loss
 from sklearn import svm
-import scipy.stats as stats
-import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import confusion_matrix
-from sklearn.metrics import hinge_loss
+
 
 def find_distribution(X,features):
     count = 0
